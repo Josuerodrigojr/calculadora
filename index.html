@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <style>
+        html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    background-image: linear-gradient(180deg, #ffb629 0, #ffa537 10%, #ff9243 20%, #ff7e4b 30%, #ff6951 40%, #f25353 50%, #d93f53 60%, #c22f54 70%, #ad2355 80%, #9b1b56 90%, #8c1859 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    font-size: 20px;
+    
+}
+
+body nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.linha1{
+    width: 180px;
+    height: 80px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.linha2{
+    width: 90px;
+    height: 80px;
+    font-size: 30px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <table border=1 >
+            <thead>
+                <tr>
+                    <th  class="linha1"  colspan = "2" ><input type="text" id="resultado"  class="linha1" disabled></th>
+                    <th><button value="limpar" class="linha2" onclick="limpar()">C</button></th>
+                    <th><button value="apagar" class="linha2" onclick="apagar()">←</button></th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr>
+                    <td> <button value="7" class="linha2" onclick="numero('7')">7</button></td>
+                    <td ><button value="8"  class="linha2" onclick="numero('8')">8</button></td>
+                    <td> <button value="9" class="linha2" onclick="numero('9')" >9</button></td>
+                    <td> <button value="9" class="linha2" onclick="numero('/')">÷</button></td>
+                </tr>
+                <tr>
+                    <td> <button value="4" class="linha2" onclick="numero('4')">4</button></td>
+                    <td ><button value="5"  class="linha2" onclick="numero('5')">5</button></td>
+                    <td> <button value="6" class="linha2" onclick="numero('6')">6</button></td>
+                    <td> <button value="*" class="linha2" onclick="numero('*')">x</button></td>
+                </tr>
+                <tr>
+                    <td> <button value="1" class="linha2" onclick="numero('1')">1</button></td>
+                    <td ><button value="2"  class="linha2" onclick="numero('2')">2</button></td>
+                    <td> <button value="3" class="linha2" onclick="numero('3')">3</button></td>
+                    <td> <button value="+" class="linha2" onclick="numero('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td> <button value="0" class="linha2" onclick="numero('0')">0</button></td>
+                    <td ><button value="."  class="linha2" onclick="numero('.')">.</button></td>
+                    <td> <button value="=" class="linha2" onclick ='calcular()'>=</button></td>
+                    <td> <button value="-" class="linha2" onclick="numero('-')">-</button></td>
+                </tr>
+            </tbody>
+        </table>
+    
+    </nav>
+    
+<script>
+    function numero(num1){
+    // let num1 = document.getElementById('numero').value;
+    // console.log (num1);
+    var numero = document.getElementById('resultado').value;
+    document.getElementById('resultado').value =numero + num1;
+
+}
+
+function limpar(){
+    document.getElementById('resultado').value = " ";
+}
+
+function apagar(){
+    var resultado = document.getElementById('resultado').value;
+    document.getElementById('resultado').value = resultado.substring(0, resultado.length - 1);
+}
+
+function calcular(){
+    var resultado = document.getElementById('resultado').value;
+    if (resultado){
+        document.getElementById('resultado').value = eval(resultado);
+    }
+}
+</script>
+</body>
+</html>

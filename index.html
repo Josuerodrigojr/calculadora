@@ -107,8 +107,7 @@ function apagar(){
 function calcular(){
     var resultado = document.getElementById('resultado').value;
     if (resultado){
-        resultado = eval(resultado);
-        document.getElementById('resultado').value =resultado.toFixed(3);
+        document.getElementById('resultado').value = eval(resultado);
     }
 }
 </script>

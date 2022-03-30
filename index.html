@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
-
-    <style>
-        html{
+<style>
+    html{
     height: 100%;
 }
 
 body{
     height: 100%;
-    background-image: linear-gradient(180deg, #ffb629 0, #ffa537 10%, #ff9243 20%, #ff7e4b 30%, #ff6951 40%, #f25353 50%, #d93f53 60%, #c22f54 70%, #ad2355 80%, #9b1b56 90%, #8c1859 100%);
+    background-color:rgba(0, 0, 0, 0.5);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -36,6 +35,12 @@ body nav{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 30px;
     text-align: center;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid white;
+    outline: none;
+    transition: 1s ease-in-out;
+    color: black;
 }
 
 .linha2{
@@ -44,7 +49,34 @@ body nav{
     font-size: 30px;
     text-align: center;
 }
-    </style>
+
+
+button {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid white;
+    outline: none;
+    transition: 1s ease-in-out;
+  }
+
+  
+  button:hover {
+    transition: 1s ease-in-out;
+    background: #746262;
+  }
+  
+
+  
+  button{
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+  }
+
+  
+</style>
 </head>
 <body>
     <nav>
@@ -61,7 +93,7 @@ body nav{
                     <td> <button value="7" class="linha2" onclick="numero('7')">7</button></td>
                     <td ><button value="8"  class="linha2" onclick="numero('8')">8</button></td>
                     <td> <button value="9" class="linha2" onclick="numero('9')" >9</button></td>
-                    <td> <button value="9" class="linha2" onclick="numero('/')">÷</button></td>
+                    <td> <button value="/" class="linha2" onclick="numero('/')">÷</button></td>
                 </tr>
                 <tr>
                     <td> <button value="4" class="linha2" onclick="numero('4')">4</button></td>
@@ -87,12 +119,24 @@ body nav{
     </nav>
     
 <script>
-    function numero(num1){
-    // let num1 = document.getElementById('numero').value;
-    // console.log (num1);
-    var numero = document.getElementById('resultado').value;
-    document.getElementById('resultado').value =numero + num1;
+    let usoDaVirgula = false;
 
+function numero(num1){
+    var numero = document.getElementById('resultado').value;
+    console.log(numero, "numero")
+    var numeroAtual = numero + num1;
+    if (num1==0 || num1=="." && numero.length ==0){
+        document.getElementById('resultado').value = 0 + ".";
+        usoDaVirgula = true;
+
+    } else if (num1 =="." && numero.includes(".") == true || usoDaVirgula == true){
+        document.getElementById('resultado').value = numero;
+
+
+    } else {
+        document.getElementById('resultado').value = numeroAtual;
+    }
+    // console.log(numeroAtual.includes('.'))
 }
 
 function limpar(){
@@ -107,9 +151,12 @@ function apagar(){
 function calcular(){
     var resultado = document.getElementById('resultado').value;
     if (resultado){
-        document.getElementById('resultado').value = eval(resultado);
+        resultado = eval(resultado);
+        document.getElementById('resultado').value = resultado;
     }
 }
+
+
 </script>
 </body>
 </html>

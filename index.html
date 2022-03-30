@@ -120,17 +120,22 @@ button {
     
 <script>
     let usoDaVirgula = false;
+let numero1 = "";
+let numeroAtual = "";
 
 function numero(num1){
-    var numero = document.getElementById('resultado').value;
-    console.log(numero, "numero")
-    var numeroAtual = numero + num1;
-    if (num1==0 || num1=="." && numero.length ==0){
-        document.getElementById('resultado').value = 0 + ".";
-        usoDaVirgula = true;
+    var numero1 = document.getElementById('resultado').value;
+    console.log(numero1.length, "tamanho")
+    var numeroAtual = numero1 + num1;
+    if ((num1==0 || num1==".") && numero1.length ==0){
+        numero1 = "0."
+        document.getElementById('resultado').value = numero1;
 
-    } else if (num1 =="." && numero.includes(".") == true || usoDaVirgula == true){
-        document.getElementById('resultado').value = numero;
+
+    } else if (num1 == "." && numero1.includes(".") == true){
+        console.log("Aquui")
+        document.getElementById('resultado').value = numero1;
+
 
 
     } else {
@@ -141,6 +146,7 @@ function numero(num1){
 
 function limpar(){
     document.getElementById('resultado').value = " ";
+    zerar();
 }
 
 function apagar(){
@@ -153,10 +159,16 @@ function calcular(){
     if (resultado){
         resultado = eval(resultado);
         document.getElementById('resultado').value = resultado;
+
     }
 }
 
-
+function zerar(){
+    usoDaVirgula = false;
+    numero1 = "";
+    numeroAtual = "";
+    document.getElementById('resultado').value = "";
+}
 </script>
 </body>
 </html>

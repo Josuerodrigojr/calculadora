@@ -4,79 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Calculadora</title>
-<style>
-    html{
-    height: 100%;
-}
 
-body{
-    height: 100%;
-    background-color:rgba(0, 0, 0, 0.5);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    font-size: 20px;
     
-}
-
-body nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    grid-column: 2/3;
-    grid-row: 2/3;
-}
-
-.linha1{
-    width: 180px;
-    height: 80px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 30px;
-    text-align: center;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid white;
-    outline: none;
-    transition: 1s ease-in-out;
-    color: black;
-}
-
-.linha2{
-    width: 90px;
-    height: 80px;
-    font-size: 30px;
-    text-align: center;
-}
-
-
-button {
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid white;
-    outline: none;
-    transition: 1s ease-in-out;
-  }
-
-  
-  button:hover {
-    transition: 1s ease-in-out;
-    background: #746262;
-  }
-  
-
-  
-  button{
-    color: white;
-    font-size: 18px;
-    font-weight: 100;
-  }
-
-  
-</style>
 </head>
 <body>
     <nav>
@@ -93,7 +24,7 @@ button {
                     <td> <button value="7" class="linha2" onclick="numero('7')">7</button></td>
                     <td ><button value="8"  class="linha2" onclick="numero('8')">8</button></td>
                     <td> <button value="9" class="linha2" onclick="numero('9')" >9</button></td>
-                    <td> <button value="/" class="linha2" onclick="numero('/')">÷</button></td>
+                    <td> <button value="9" class="linha2" onclick="numero('/')">÷</button></td>
                 </tr>
                 <tr>
                     <td> <button value="4" class="linha2" onclick="numero('4')">4</button></td>
@@ -118,57 +49,9 @@ button {
     
     </nav>
     
-<script>
-    let usoDaVirgula = false;
-let numero1 = "";
-let numeroAtual = "";
-
-function numero(num1){
-    var numero1 = document.getElementById('resultado').value;
-    console.log(numero1.length, "tamanho")
-    var numeroAtual = numero1 + num1;
-    if ((num1==0 || num1==".") && numero1.length ==0){
-        numero1 = "0."
-        document.getElementById('resultado').value = numero1;
-
-
-    } else if (num1 == "." && numero1.includes(".") == true){
-        console.log("Aquui")
-        document.getElementById('resultado').value = numero1;
-
-
-
-    } else {
-        document.getElementById('resultado').value = numeroAtual;
-    }
-    // console.log(numeroAtual.includes('.'))
-}
-
-function limpar(){
-    document.getElementById('resultado').value = " ";
-    zerar();
-}
-
-function apagar(){
-    var resultado = document.getElementById('resultado').value;
-    document.getElementById('resultado').value = resultado.substring(0, resultado.length - 1);
-}
-
-function calcular(){
-    var resultado = document.getElementById('resultado').value;
-    if (resultado){
-        resultado = eval(resultado);
-        document.getElementById('resultado').value = resultado;
-
-    }
-}
-
-function zerar(){
-    usoDaVirgula = false;
-    numero1 = "";
-    numeroAtual = "";
-    document.getElementById('resultado').value = "";
-}
+<script type="text/javascript" src="./index.js">
+    
 </script>
+
 </body>
 </html>
